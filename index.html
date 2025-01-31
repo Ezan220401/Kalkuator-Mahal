@@ -10,30 +10,33 @@
             <form name="calculator">
                 <input id="display" type="text" name="display" readonly> <br>
     
-                <button type="button" class="tombol" onclick="backspace()">⌫</button>
-                <button type="button" class="tombolTrigonometri" onclick="calculateTrig('sin')">sin</button>
-                <button type="button" class="tombolTrigonometri" onclick="calculateTrig('cos')">cos</button>
-                <button type="button" class="tombolTrigonometri" onclick="calculateTrig('tan')">tan</button>
-                <br>
-                <input class="tombolDigits" type="button" value="7" onclick="calculator.display.value += '7'">
-                <input class="tombolDigits" type="button" value="8" onclick="calculator.display.value += '8'">
-                <input class="tombolDigits" type="button" value="9" onclick="calculator.display.value += '9'">
-                <input class="tombolAritmatika" type="button" value="+" onclick="calculator.display.value += '+'">
-                <br>
-                <input class="tombolDigits" type="button" value="4" onclick="calculator.display.value += '4'">
-                <input class="tombolDigits" type="button" value="5" onclick="calculator.display.value += '5'">
-                <input class="tombolDigits" type="button" value="6" onclick="calculator.display.value += '6'">
-                <input class="tombolAritmatika" type="button" value="-" onclick="calculator.display.value += '-'">
-                <br>
-                <input class="tombolDigits" type="button" value="1" onclick="calculator.display.value += '1'">
-                <input class="tombolDigits" type="button" value="2" onclick="calculator.display.value += '2'">
-                <input class="tombolDigits" type="button" value="3" onclick="calculator.display.value += '3'">
-                <input class="tombolAritmatika" type="button" value="×" onclick="calculator.display.value += '*'">
-                <br>
-                <input id="reset" class="tombol" type="button" value="C" onclick="calculator.display.value = ''">
-                <input class="tombolDigits" type="button" value="0" onclick="calculator.display.value += '0'">
-                <input class="tombolAritmatika" type="button" value="=" onclick="calculateResult()">
-                <input class="tombolAritmatika" type="button" value="÷" onclick="calculator.display.value += '/'">
+                <div class="kelompokTombol">
+                    
+                    <button type="button" class="tombolTrigonometri" onclick="calculateTrig('sin')">sin</button>
+                    <button type="button" class="tombolTrigonometri" onclick="calculateTrig('cos')">cos</button>
+                    <button type="button" class="tombolTrigonometri" onclick="calculateTrig('tan')">tan</button>
+                    <button type="button" class="tombol" onclick="backspace()">⌫</button>
+
+                    <input class="tombolDigits" type="button" value="7" onclick="calculator.display.value += '7'">
+                    <input class="tombolDigits" type="button" value="8" onclick="calculator.display.value += '8'">
+                    <input class="tombolDigits" type="button" value="9" onclick="calculator.display.value += '9'">
+                    <input class="tombolAritmatika" type="button" value="+" onclick="calculator.display.value += '+'">
+
+                    <input class="tombolDigits" type="button" value="4" onclick="calculator.display.value += '4'">
+                    <input class="tombolDigits" type="button" value="5" onclick="calculator.display.value += '5'">
+                    <input class="tombolDigits" type="button" value="6" onclick="calculator.display.value += '6'">
+                    <input class="tombolAritmatika" type="button" value="-" onclick="calculator.display.value += '-'">
+
+                    <input class="tombolDigits" type="button" value="1" onclick="calculator.display.value += '1'">
+                    <input class="tombolDigits" type="button" value="2" onclick="calculator.display.value += '2'">
+                    <input class="tombolDigits" type="button" value="3" onclick="calculator.display.value += '3'">
+                    <input class="tombolAritmatika" type="button" value="×" onclick="calculator.display.value += '*'">
+
+                    <input id="reset" class="tombol" type="button" value="C" onclick="calculator.display.value = ''">
+                    <input class="tombolDigits" type="button" value="0" onclick="calculator.display.value += '0'">
+                    <input class="tombolAritmatika" type="button" value="=" onclick="calculateResult()">
+                    <input class="tombolAritmatika" type="button" value="÷" onclick="calculator.display.value += '/'">
+                </div>
             </form>
         </fieldset>
     </div>
