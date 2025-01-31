@@ -54,7 +54,7 @@ body {
   border-radius: 4px;
 }
 
-.aritmatika {
+.tombolAritmatika, .tombolTrigonometri {
   margin: 2px 2px 6px 2px;
   color: #fff;
   text-shadow: -1px -1px 0px #44006f;
@@ -79,9 +79,17 @@ body {
 }
 
 .digits:hover,
-.aritmatika:hover,
+.tombolAritmatika:hover,
 #reset:hover {
   background-color: #ffba75;
+  box-shadow: 0px 0px 2px #ffba75, inset 0px -20px 1px #ff8000;
+  border-top: 2px solid #fff;
+  border-right: 2px solid #fff;
+  border-bottom: 2px solid #ae5700;
+  border-left: 2px solid #ae5700;
+}
+.tombolTrigonometri:hover{
+  background-color: #cyan;
   box-shadow: 0px 0px 2px #ffba75, inset 0px -20px 1px #ff8000;
   border-top: 2px solid #fff;
   border-right: 2px solid #fff;
