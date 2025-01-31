@@ -1,37 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Kalkuator Sederhana</title>
+    <title>Kalkulator Sederhana</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div class="container">
-    <fieldset id="container">
-        <form name="calculator">
-
-            <input id="display" type="text" name="display" readonly>
-
-            <input class="tombol digits" type="button" value="7" onclick="calculator.display.value += '7'">
-            <input class="tombol digits" type="button" value="8" onclick="calculator.display.value += '8'">
-            <input class="tombol digits" type="button" value="9" onclick="calculator.display.value += '9'">
-            <input class="tombol aritmatika" type="button" value="+" onclick="calculator.display.value += ' + '">
-            <br>
-            <input class="tombol digits" type="button" value="4" onclick="calculator.display.value += '4'">
-            <input class="tombol digits" type="button" value="5" onclick="calculator.display.value += '5'">
-            <input class="tombol digits" type="button" value="6" onclick="calculator.display.value += '6'">
-            <input class="tombol aritmatika" type="button" value="-" onclick="calculator.display.value += ' - '">
-            <br>
-            <input class="tombol digits" type="button" value="1" onclick="calculator.display.value += '1'">
-            <input class="tombol digits" type="button" value="2" onclick="calculator.display.value += '2'">
-            <input class="tombol digits" type="button" value="3" onclick="calculator.display.value += '3'">
-            <input class="tombol aritmatika" type="button" value="x" onclick="calculator.display.value += ' * '">
-            <br>
-            <input id="reset" class="tombol" type="button" value="C" onclick="calculator.display.value = ''">
-            <input class="tombol digits" type="button" value="0" onclick="calculator.display.value += '0'">
-            <input class="tombol aritmatika" type="button" value="=" onclick="calculator.display.value = eval(calculator.display.value)">
-            <input class="tombol aritmatika" type="button" value="/" onclick="calculator.display.value += ' / '">
-        </form>
-    </fieldset>
-</div>
+    <div class="container">
+        <fieldset id="container">
+            <form name="calculator">
+                <input id="display" type="text" name="display" readonly>
+    
+                <button type="button" class="tombol" onclick="backspace()">⌫</button>
+                <button type="button" class="tombolTrigonometri" onclick="calculateTrig('sin')">sin</button>
+                <button type="button" class="tombolTrigonometri" onclick="calculateTrig('cos')">cos</button>
+                <button type="button" class="tombolTrigonometri" onclick="calculateTrig('tan')">tan</button>
+    
+                <input class="tombolDigits" type="button" value="7" onclick="calculator.display.value += '7'">
+                <input class="tombolDigits" type="button" value="8" onclick="calculator.display.value += '8'">
+                <input class="tombolDigits" type="button" value="9" onclick="calculator.display.value += '9'">
+                <input class="tombolAritmatika" type="button" value="+" onclick="calculator.display.value += '+'">
+                <br>
+                <input class="tombolDigits" type="button" value="4" onclick="calculator.display.value += '4'">
+                <input class="tombolDigits" type="button" value="5" onclick="calculator.display.value += '5'">
+                <input class="tombolDigits" type="button" value="6" onclick="calculator.display.value += '6'">
+                <input class="tombolAritmatika" type="button" value="-" onclick="calculator.display.value += '-'">
+                <br>
+                <input class="tombolDigits" type="button" value="1" onclick="calculator.display.value += '1'">
+                <input class="tombolDigits" type="button" value="2" onclick="calculator.display.value += '2'">
+                <input class="tombolDigits" type="button" value="3" onclick="calculator.display.value += '3'">
+                <input class="tombolAritmatika" type="button" value="×" onclick="calculator.display.value += '*'">
+                <br>
+                <input id="reset" class="tombol" type="button" value="C" onclick="calculator.display.value = ''">
+                <input class="tombolDigits" type="button" value="0" onclick="calculator.display.value += '0'">
+                <input class="tombolAritmatika" type="button" value="=" onclick="calculateResult()">
+                <input class="tombolAritmatika" type="button" value="÷" onclick="calculator.display.value += '/'">
+            </form>
+        </fieldset>
+    </div>
+    <script>
+        function backspace() {
+            let display = document.getElementById("display");
+            display.value = display.value.slice(0, -1); //hapus angka terbaru
+            if (display.value === "") {
+                display.value = "0";
+            }
+        }
+    
+        function calculateTrig(func) {
+            let display = document.getElementById("display");
+            let value = parseFloat(display.value);
+            if (isNaN(value)) {
+                display.value = "Error";
+                return;
+            }
+            let radians = value * (Math.PI / 180); //konversi ke radian karena sudut di bahasa javascript diukur dengan radian, bukan derajat
+            switch (func) {
+                case 'sin':
+                    display.value = Math.sin(radians).toFixed(5);
+                    break;
+                case 'cos':
+                    display.value = Math.cos(radians).toFixed(5);
+                    break;
+                case 'tan':
+                    display.value = Math.tan(radians).toFixed(5);
+                    break;
+            }
+        }
+    
+        function calculateResult() {
+            let display = document.getElementById("display");
+            try {
+                display.value = eval(display.value);
+            } catch (error) {
+                display.value = "Error";
+            }
+        }
+    </script>
 </body>
 </html>
