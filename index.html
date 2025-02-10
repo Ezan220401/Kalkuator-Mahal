@@ -20,22 +20,22 @@
                     <input class="tombolDigits" type="button" value="7" onclick="calculator.display.value += '7'">
                     <input class="tombolDigits" type="button" value="8" onclick="calculator.display.value += '8'">
                     <input class="tombolDigits" type="button" value="9" onclick="calculator.display.value += '9'">
-                    <input class="tombolAritmatika" type="button" value="+" onclick="calculator.display.value += '+'">
+                    <input class="tombolAritmatika" type="button" value="+" onclick = "appendOperator('+')">
 
                     <input class="tombolDigits" type="button" value="4" onclick="calculator.display.value += '4'">
                     <input class="tombolDigits" type="button" value="5" onclick="calculator.display.value += '5'">
                     <input class="tombolDigits" type="button" value="6" onclick="calculator.display.value += '6'">
-                    <input class="tombolAritmatika" type="button" value="-" onclick="calculator.display.value += '-'">
+                    <input class="tombolAritmatika" type="button" value="-" onclick = "appendOperator('-')">
 
                     <input class="tombolDigits" type="button" value="1" onclick="calculator.display.value += '1'">
                     <input class="tombolDigits" type="button" value="2" onclick="calculator.display.value += '2'">
                     <input class="tombolDigits" type="button" value="3" onclick="calculator.display.value += '3'">
-                    <input class="tombolAritmatika" type="button" value="×" onclick="calculator.display.value += '*'">
+                    <input class="tombolAritmatika" type="button" value="×" onclick = "appendOperator('*')">
 
                     <input id="reset" class="tombol" type="button" value="C" onclick="calculator.display.value = ''">
                     <input class="tombolDigits" type="button" value="0" onclick="calculator.display.value += '0'">
                     <input class="tombolAritmatika" type="button" value="=" onclick="calculateResult()">
-                    <input class="tombolAritmatika" type="button" value="÷" onclick="calculator.display.value += '/'">
+                    <input class="tombolAritmatika" type="button" value="÷" onclick = "appendOperator('/')">
                 </div>
             </form>
         </fieldset>
@@ -46,6 +46,20 @@
             display.value = display.value.slice(0, -1); //hapus angka terbaru
             if (display.value === "") {
                 display.value = "0";
+            }
+        }
+
+        function appendOperator(operator) {
+            let display = document.getElementById("display");
+            let value = display.value;
+            if (value === "") {
+                return; // kembaliikan nilai yang ada
+            }
+
+            if (/[+\-\×\÷]$/.test(value)) {
+                display.value = value(0, -1) + operator; //bila pengguna menekan beberapa operator
+            } else {
+                display.value += operator
             }
         }
     
@@ -59,13 +73,13 @@
             let radians = value * (Math.PI / 180); //konversi ke radian karena sudut di bahasa javascript diukur dengan radian, bukan derajat
             switch (func) {
                 case 'sin':
-                    display.value = Math.sin(radians).toFixed(5);
+                    display.value = `Sin(${value}) = ` + Math.sin(radians).toFixed(3);
                     break;
                 case 'cos':
-                    display.value = Math.cos(radians).toFixed(5);
+                    display.value = `Cos(${value}) = ` + Math.cos(radians).toFixed(3);
                     break;
                 case 'tan':
-                    display.value = Math.tan(radians).toFixed(5);
+                    display.value = `Tan(${value}) = ` + Math.tan(radians).toFixed(3);
                     break;
             }
         }
@@ -78,6 +92,8 @@
                 display.value = "Error";
             }
         }
+
+
     </script>
 </body>
 </html>
